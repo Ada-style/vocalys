@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vocalys : transcription et traduction audio & vidéo en texte</title>
+<meta name="description" content="Transformez vos audios et vidéos en texte, puis traduisez-les. Abonnements simples, données protégées, espace de travail avec historique.">
+<meta name="theme-color" content="#5b4bff">
+<meta property="og:title" content="Vocalys : transcription et traduction audio & vidéo">
+<meta property="og:description" content="Importez un audio ou une vidéo, obtenez le texte, traduisez-le. Simple et sécurisé.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a href="#/" class="brand"><img src="/img/logo-mark.svg" alt=""><span id="brandName">Vocalys</span></a>
+    <button id="burger" aria-label="Ouvrir le menu">☰ Menu</button>
+    <nav id="nav" aria-label="Navigation principale"></nav>
+  </div>
+</header>
+<main class="wrap" id="app" aria-live="polite"></main>
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div><img src="/img/logo.svg" alt="Vocalys" height="32" style="height:32px;width:auto"><br>La voix devient texte, dans toutes les langues.</div>
+      <div><a href="#/tarifs">Tarifs</a><a href="#/guide">Guide d'utilisation</a><a href="#/faq">FAQ</a></div>
+      <div><a href="#/apropos">À propos</a><a href="#/contact">Contact</a></div>
+      <div><a href="#/confidentialite">Confidentialité</a><a href="#/cgu">CGU</a><a href="#/mentions">Mentions légales</a></div>
+    </div>
+    <p style="margin-top:18px">© <span id="yr"></span> <span id="coName"></span>. Tous droits réservés.</p>
+  </div>
+</footer>
+<div id="modal"></div>
+<div id="toast" role="status"></div>
+<noscript><p class="wrap">Vocalys nécessite JavaScript pour fonctionner.</p></noscript>
+<script src="/js/app.js"></script>
+</body>
+</html>
