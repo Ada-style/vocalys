@@ -91,9 +91,27 @@ app.use((err, req, res, next) => {
   res.status(status).json({ error: status >= 500 ? 'Erreur interne du serveur.' : err.message });
 });
 
-app.listen(config.port, () => {
-  console.log(`\n${config.app.name} démarré sur ${config.baseUrl} (port ${config.port})`);
-  if (!config.stripe.secretKey) console.log('! Stripe non configuré : le paiement est désactivé.');
-  if (!config.openai.apiKey) console.log('! OpenAI non configuré : la transcription est désactivée.');
-  if (!config.smtp.host) console.log('! SMTP non configuré : les e-mails sont affichés dans cette console.');
-});
+if (require.main === module) {
+  app.listen(config.port, () => {
+    console.log(`\n${config.app.name} démarré sur ${config.baseUrl} (port ${config.port})`);
+    if (config.saspay.apiKey) {
+      console.log('✓ Paiement : Agrégateur SasPay activé (Mobile Money Wave/Orange/MTN/Moov + Cartes)');
+    } else if (config.stripe.secretKey) {
+      console.log('✓ Paiement : Stripe activé');
+    } else {
+      console.log('! Paiement non configuré : ajoutez SASPAY_API_KEY dans votre fichier .env');
+    }
+
+    if (config.gemini.apiKey) {
+      console.log(`✓ IA Multimodale : Google Gemini activé (${config.gemini.model})`);
+    } else if (config.openai.apiKey) {
+      console.log('✓ IA : OpenAI Whisper activé');
+    } else {
+      console.log('! IA non configurée : ajoutez GEMINI_API_KEY dans votre fichier .env');
+    }
+
+    if (!config.smtp.host) console.log('! SMTP non configuré : les e-mails sont affichés dans cette console.');
+  });
+}
+
+module.exports = app;
